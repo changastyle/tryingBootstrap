@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/09/2015 18:15:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Radcheck" table="radcheck" schema="public" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="64" not-null="true" />
+        </property>
+        <property name="attribute" type="string">
+            <column name="attribute" length="64" not-null="true" />
+        </property>
+        <property name="op" type="string">
+            <column name="op" length="2" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="253" not-null="true" />
+        </property>
+        <property name="reint" type="int">
+            <column name="reint" not-null="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="observaciones" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

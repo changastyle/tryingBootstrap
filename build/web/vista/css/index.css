@@ -34,13 +34,14 @@ header h1
     border:solid 2px black;
     border-radius: 5px;
     min-height: 600px;
+    height: auto;
     padding:12px;
     box-sizing: border-box;
     margin-top: 15px;
     box-shadow: 15px 15px 25px black;
     position: absolute;
     border:solid 2px white;
-    overflow: hidden;
+    //overflow-y: scroll;
 }
 #navBar
 {
@@ -79,6 +80,7 @@ header h1
     min-height: 448px;
     margin-top: 12px;
     color:white;
+ 
     
 }
 #wraperFormularioPrincipal
@@ -151,4 +153,84 @@ footer
     position:fixed;
     right: 12px;
     bottom:12px;
+}
+.navEnlaces
+{
+    color:white;
+}
+#barraBusqueda
+{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+
+/*TABLES*/
+.grid
+{
+    color:black;
+}
+.grid td
+{
+    text-align: center;
+}
+.gridRows:hover
+{
+    color:black;
+    background-color:lightslategrey;
+}
+.grid th
+{
+    background-color:#2A6497;
+    color:white;
+    text-align: center;
+    font-size: 18px;
+    
+}
+.gridButton
+{
+    width: 50px;
+    cursor:pointer;
+    /*background-color:#2A6497;
+    border-radius: 10px;*/
+}
+.gridButton:hover
+{
+    color:white;
+    box-sizing: border-box;
+    text-decoration: underline;
+}
+.gridCheckboxs
+{
+    
+}
+.wrapsGridCheckboxs
+{
+    width: 50px;
+}
+.checkboxChecked
+{
+    background-color:#8AC007;
+    color:black;
+}
+.checkboxChecked:hover
+{
+    background-color:#8AC007;   
+}
+
+
+/**/
+thead
+{
+cursor:pointer;
+position: fixed;
+width: 100%;
+}
+tbody
+{
+    background-color:brown;
+    height: 120px;
+    overflow: hidden;
 }
