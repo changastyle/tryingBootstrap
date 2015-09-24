@@ -38,6 +38,16 @@ public class Radcheck  implements java.io.Serializable {
        this.reint = reint;
        this.observaciones = observaciones;
     }
+    public Radcheck(String username, String attribute, String op, String value, int reint, String observaciones) 
+    {
+       this.id = 0;
+       this.username = username;
+       this.attribute = attribute;
+       this.op = op;
+       this.value = value;
+       this.reint = reint;
+       this.observaciones = observaciones;
+    }
    
     public int getId() {
         return this.id;
@@ -87,6 +97,12 @@ public class Radcheck  implements java.io.Serializable {
     
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Radcheck{" + "id=" + id + ", username=" + username + ", attribute=" + attribute + ", op=" + op + ", value=" + value + ", reint=" + reint + ", observaciones=" + observaciones + '}';
     }
 
 

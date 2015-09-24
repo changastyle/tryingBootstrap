@@ -1,22 +1,25 @@
-
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
 <% 
     String orderBy = request.getParameter("orderBy");
     
+    if(orderBy==null)
+    {
+        orderBy = "usuarioADSL";
+    }
     
     out.print("{\"vector\":[");
-    java.util.ArrayList<model.Radcheck> arr = controller.Controller.findAllRadchecks(orderBy);
+    java.util.ArrayList<model.ModemRadx> arr = controller.Controller.findAllModemRadx(orderBy);
     
     int contador = 0;
-    for(model.Radcheck radcheck : arr)
+    for(model.ModemRadx modemRadx : arr)
     {
         JSONObject aux = new JSONObject();
         
-	aux.put("id",  radcheck.getId());
-        aux.put("username",  radcheck.getUsername());
-        aux.put("value",  radcheck.getValue());
-        aux.put("observaciones",  radcheck.getObservaciones());
+	aux.put("usuarioADSL",  modemRadx.getUsuarioADSL());
+        aux.put("direccionIP",  modemRadx.getDireccionIP());
+        aux.put("reintentos",  modemRadx.getReintentos());
+        aux.put("descripcion",  modemRadx.getDescripcion());
         
         out.print(aux);
         

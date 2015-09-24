@@ -1,4 +1,7 @@
 package daos;
+
+import model.Radcheck;
+
 public class RadcheckDAO
 {
     public static java.util.ArrayList<model.Radcheck> findAllRadchecks()
@@ -28,5 +31,43 @@ public class RadcheckDAO
         
         
         return arrRespuetas;
+    }
+
+    public static int getMaxID()
+    {
+        int maxID = 1;
+        for(Radcheck radcheck : findAllRadchecks())
+        {
+            if(maxID <= radcheck.getId())
+            {
+                maxID = radcheck.getId() + 1;
+            }
+        }
+        
+        return maxID;
+    }
+    
+    public static boolean save(Radcheck radcheckRepresentativo)
+    {
+        boolean inserto = false;
+        int id = getMaxID();
+        radcheckRepresentativo.setId(id);
+        if( daos.AbstractDAO.save(radcheckRepresentativo)  != -1 )
+        {
+            inserto = true;
+        }
+        return inserto;
+    }
+    public static boolean existeTalRadcheckByUsername(String username)
+    {
+        boolean existe = false;
+        for(Radcheck radcheck :findAllRadchecks())
+        {
+            if(radcheck.getUsername().equalsIgnoreCase(username))
+            {
+                existe = true;
+            }
+        }
+        return existe;
     }
 }

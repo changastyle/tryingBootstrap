@@ -25,6 +25,13 @@ public class Radreply  implements java.io.Serializable {
        this.op = op;
        this.value = value;
     }
+    public Radreply(String username, String attribute, String op, String value) {
+       this.id = 0;
+       this.username = username;
+       this.attribute = attribute;
+       this.op = op;
+       this.value = value;
+    }
    
     public int getId() {
         return this.id;
@@ -62,7 +69,13 @@ public class Radreply  implements java.io.Serializable {
         this.value = value;
     }
 
+    @Override
+    public String toString()
+    {
+        return "Radreply{" + "id=" + id + ", username=" + username + ", attribute=" + attribute + ", op=" + op + ", value=" + value + '}';
+    }
 
+    
 
 
 }

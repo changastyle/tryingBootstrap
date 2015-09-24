@@ -44,7 +44,7 @@ public class AbstractDAO
 
      public static int save(Object object)
     {
-        int id = 0;
+        int id = -1;
         
         Transaction transaction = null;
         
@@ -53,11 +53,10 @@ public class AbstractDAO
             Session sessionProvisoria = conectar();
             
             transaction = sessionProvisoria.beginTransaction();
-            /*id = (int)*/ sessionProvisoria.save(object);
+            id = (int)sessionProvisoria.save(object);
             transaction.commit();
            
             desconectar(sessionProvisoria);
-            id = 1;
         }
         catch(Exception e)
         {

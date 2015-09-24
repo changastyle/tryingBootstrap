@@ -1,13 +1,14 @@
-<%-- 
-    Document   : login
-    Created on : 22/09/2015, 22:33:25
-    Author     : NICOLAS
---%>
-<script>
+<head>
+    <%@page contentType="text/html" pageEncoding="UTF-8"%>
+    <script>
     function irHome()
     {
-        window.location = "pages/VPN-Modem2.jsp";
+        window.location = "pages/index3.jsp";
     }
-</script>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<button onclick="irHome()">Ir al Home</button>
+    </script>
+</head>
+<body>
+    <button onclick="irHome()">Ir al Home</button>
+</body>
+
+
