@@ -25,5 +25,5 @@
         out.print("NO Inserto.");
     }
     
-    response.sendRedirect("index3.jsp");
+    //response.sendRedirect("index3.jsp");
 %>

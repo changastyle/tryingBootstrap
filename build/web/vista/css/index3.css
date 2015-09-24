@@ -1,0 +1,162 @@
+*
+{
+    font-family: Prototype;
+}
+#bg
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-image: url("../img/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -5;
+}
+#banner
+{
+    //border:solid 2px black;
+    text-align: center;
+    background-color: rgba(0,0,0,0.85);
+    color:white;
+    height: 55px;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding:5px;
+
+}
+#leftBanner
+{
+    //border:solid 2px black;
+    height: 80%;
+    cursor: pointer;
+    font-size: 24px;
+    padding:4px;
+    transition: 0.5s;
+    border-radius: 5px;
+    overflow: hidden;
+     font-family: Prototype;
+}
+#leftBanner:hover
+{
+    background-color: #8AC007;
+    transition: 0.5s;
+    
+}
+#midBanner
+{
+    //border:solid 2px black;
+    height: 100%;
+}
+select
+{
+    margin-top: 4px;
+}
+
+#rightBanner
+{
+    //border:solid 2px black;
+    height: 100%;
+}
+.pestañas:hover
+{
+    background-color:#8AC007;
+    border-radius: 5px;
+}
+#nav tabsLI a
+{
+    color:white;
+    //border:solid 2px black;
+}
+a
+{
+    color:white;
+}
+.tabsLI a:hover
+{
+    background-color:#8AC007;
+}
+#principal
+{
+    //height: 300px;
+    //border:solid 2px black;
+    min-height: 600px;
+    background-color: rgba(0,0,0,0.85);
+    color:white;
+}
+footer
+{
+    //border:solid 2px black;
+    background-color: rgba(0,0,0,0.85);
+    text-align: center;
+    color:white;
+    min-height: 150px;
+    margin-top: 15px;
+}
+#footerHead
+{
+     //border:solid 2px yellow;
+     margin-top:15px;
+     margin-bottom:15px;
+     font-size: 20px;
+}
+#footerCOL1
+{
+    //border:solid 2px yellow;
+    height: 80px;
+    background-image: url('../img/logo-tecnoaccion.jpg');
+    background-size: cover;
+}
+#footerCOL2
+{
+    //border:solid 2px yellow;
+    height: 80px;
+}
+#footerCOL3
+{
+    //border:solid 2px yellow;
+    height: 80px;
+}
+.gridHeader
+{
+    //background-color: #93B5F9;
+    //color:black;
+}
+.gridHeader:hover
+{
+    cursor:pointer;
+    text-decoration: underline;
+    background-color: #8AC007;
+   
+}
+#formulario
+{
+    height: 35px;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+    color:white;
+    transition: 1s;
+    overflow: hidden;
+    
+    margin-top: 15px;
+}
+#formulario:hover
+{
+    text-decoration: underline;
+}
+#headerFormulario
+{
+    font-size:20px;
+    text-align: center;
+    padding: 4px;
+}
+#bodyFormulario
+{
+    display: none;
+}
+
+
+/*GRIDS*/
+#gridModemRadx
+{
+    font-size: 16px;
+}

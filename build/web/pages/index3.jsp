@@ -9,60 +9,8 @@
         <!-- Latest compiled JavaScript -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            #banner
-            {
-                //border:solid 2px black;
-                text-align: center;
-                background-color: rgba(0,0,0,0.3);
-                color:white;
-            }
-            #nav
-            {
-                //border:solid 2px black;
-            }
-            #principal
-            {
-                //height: 300px;
-                //border:solid 2px black;
-                min-height: 600px;
-            }
-            footer
-            {
-                //border:solid 2px black;
-                background-color: rgba(0,0,0,0.3);
-                text-align: center;
-                color:white;
-            }
-            .gridHeader:hover
-            {
-                cursor:pointer;
-                text-decoration: underline;
-            }
-            #formulario
-            {
-                height: 35px;
-                background-color: rgba(0,0,0,0.3);
-                cursor: pointer;
-                color:white;
-                transition: 1s;
-                overflow: hidden;
-            }
-            #formulario:hover
-            {
-                text-decoration: underline;
-            }
-            #headerFormulario
-            {
-                font-size:20px;
-                text-align: center;
-                padding: 4px;
-            }
-            #bodyFormulario
-            {
-                display: none;
-            }
-        </style>
+        <link rel="stylesheet" href="../vista/css/fonts/fonts.css">
+        <link rel="stylesheet" href="../vista/css/index3.css">
         <script>
             $(document).ready(function()
             {
@@ -86,6 +34,9 @@
                 {
                     $("#bodyFormulario").html(data);
                 }});
+            
+                //MIGAS DE PAN:
+                $("#rightBanner").html(paginaGrid);
             }
             function desplegarFormulario()
             {
@@ -109,26 +60,58 @@
                 console.log("verificandoFormularioModemRadx");
                 return false;
             }
+            function irHome()
+            {
+                window.location = "index3.jsp";
+            }
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index3</title>
     </head>
     <body>
-        <div class="container-fluid" id="banner">Banner</div>
-        <div class="container" id="nav">
-            <ul class="nav nav-tabs">
-                <li class="tabsLI active"><a href="javascript:cargar('GridModemRadx.jsp','FormularioModemRadx.jsp')">Grilla Modems</a></li>
-                <li class="tabsLI"><a href="#">Grilla Usuarios</a></li>
-                <li class="tabsLI"><a href="#">Grilla Plan Maestro Modems</a></li>
-                <li class="tabsLI"><a href="#">Grilla Plan Maestro VSATS</a></li>
-            </ul>
+        <div id="bg"></div>
+        
+        <div class="container-fluid" id="banner">
+            <div id="leftBanner" class="col-xs-4 col-sm-2 col-md-2 container" onclick="irHome()">VPN Manager</div>
+            
+            <!--UN DIV O EL OTRO SEGUN EL TAMAÑO DE LA PANTALLA:-->
+            <div id="midBanner" class="visible-sm visible-xs col-xs-8 col-sm-10 ">
+                <select class="form-control" onchange="cargar('GridModemRadx.jsp','FormularioModemRadx.jsp')">
+                    <option onclick="cargar('GridModemRadx.jsp','FormularioModemRadx.jsp')">Modems VPN</option>
+                    <option onclick="cargar('GridModemRadx.jsp','FormularioModemRadx.jsp')">Usuarios VPN</option>
+                    <option onclick="cargar('GridModemRadx.jsp','FormularioModemRadx.jsp')">Plan Maestro Modems</option>
+                    <option onclick="cargar('GridModemRadx.jsp','FormularioModemRadx.jsp')">Plan Maestro VSATS</option>
+                </select>
+                    
+            </div>
+            <!--UN DIV O EL OTRO SEGUN EL TAMAÑO DE LA PANTALLA:-->
+            <div id="midBanner" class="hidden-sm hidden-xs col-md-8">
+                <!--<div class="container" id="nav">-->
+                    <ul class="nav nav-pills nav-justified">
+                        <li class="tabsLI active"><a class="pestañas" href="javascript:cargar('GridModemRadx.jsp','FormularioModemRadx.jsp')">Modems VPN</a></li>
+                        <li class="tabsLI"><a class="pestañas" href="#">Usuarios VPN</a></li>
+                        <li class="tabsLI"><a class="pestañas" href="#">Plan Maestro Modems</a></li>
+                        <li class="tabsLI"><a class="pestañas"href="#">Plan Maestro VSATS</a></li>
+                    </ul>
+                <!--</div>-->
+            </div>
+            <div class="hidden-sm hidden-xs col-md-2 container" id="rightBanner"></div>
         </div>
+        
+        
+        
         <div class="container" id="formulario" >
             <div id="headerFormulario" onclick="desplegarFormulario()">Formularios</div>
             <div id="bodyFormulario"></div>
         </div>
         <div class="container" id="principal"></div>
         
-        <footer class="container-fluid">Footer</footer>
+        <footer class="container-fluid">
+            <div class="container" id="footerHead">Sistema construido por <a href="http://ngrossi.ddns.net">Nicolas Grossi</a>.</div>
+            
+            <div class="col-sm-2 col-md-2 col-sm-offset-2" id="footerCOL1">footerCOL1</div>
+            <div class="col-sm-2 col-md-2 col-sm-offset-1" id="footerCOL2">footerCOL2</div>
+            <div class="col-sm-2 col-md-2 col-sm-offset-1" id="footerCOL3">footerCOL3</div>
+        </footer>
     </body>
 </html>

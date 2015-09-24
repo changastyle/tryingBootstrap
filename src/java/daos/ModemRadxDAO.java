@@ -67,20 +67,30 @@ public class ModemRadxDAO
             {
                 public int compare(model.ModemRadx modemRadx1, model.ModemRadx modemRadx2) 
                 {
-                    int salida = 0;
-                    if(modemRadx1.getDescripcion()!= null && modemRadx2.getDescripcion() != null)
+                    if(modemRadx1.getDescripcion() != null && modemRadx2.getDescripcion()!=null)
                     {
-                        salida = modemRadx1.getDescripcion().compareToIgnoreCase(modemRadx2.getDescripcion());
+                        int salida = modemRadx1.getDescripcion().toLowerCase().compareTo(modemRadx2.getDescripcion().toLowerCase());
+                        if(salida < 0)
+                        {
+                            return -1;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
-                    else if(modemRadx1.getDescripcion()!= null)
+                    else
                     {
-                        salida = 0;
+                        if(modemRadx1.getDescripcion() != null)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return -1;
+                        }
                     }
-                    else if(modemRadx2.getDescripcion()!= null)
-                    {
-                        salida = 0;
-                    }
-                    return salida;
+                    
                 }
             });
         }
@@ -126,17 +136,17 @@ public class ModemRadxDAO
         boolean ok1=false,ok2=false,ok3 =false;
         try
         {
-            if(daos.RadcheckDAO.existeTalRadcheckByUsername(radcheckAUX.getUsername()))
+            if(!daos.RadcheckDAO.existeTalRadcheckByUsername(radcheckAUX.getUsername()))
             {
                 session.save(radcheckAUX);
                 ok1 = true;
             }
-            if(daos.RadreplyDAO.existeTalRadreplyByUsername(radreplyAUX1.getUsername()))
+            if(!daos.RadreplyDAO.existeTalRadreplyByUsername(radreplyAUX1.getUsername()))
             {
                 session.save(modemRadx.getRadreplyRepresentativo()); 
                 ok2 = true;
             }
-            if(daos.RadreplyDAO.existeTalRadreplyByUsername(radreplyAUX2.getUsername()))
+            if(!daos.RadreplyDAO.existeTalRadreplyByUsername(radreplyAUX2.getUsername()))
             {
                 session.save(modemRadx.getRadreplyNetMaskRepresentativo()); 
                 ok3 = true;
