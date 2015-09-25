@@ -1,4 +1,23 @@
-<% model.ModemRadx modemSugerido = controller.Controller.modemRadxSugerido(); %>
+<% 
+    model.ModemRadx modemSugerido = null;
+    String usernameRecibido = request.getParameter("id"); 
+    if(usernameRecibido != null)
+    {
+        for(model.ModemRadx modemRadx : controller.Controller.findAllModemRadx())
+        {
+            if ( modemRadx.getUsuarioADSL().equalsIgnoreCase(usernameRecibido))
+            {
+                modemSugerido = modemRadx;
+            }
+        }
+    }
+    else
+    {
+        modemSugerido = controller.Controller.modemRadxSugerido();
+    }
+%>
+
+<%  %>
 <form role="form" action="ActionFormularioModemRadx.jsp" method="post"  onsubmit="verificarFormularioModemRadx()">
     <div class="form-group">
         <label for="usuarioADSL">Usuario ADSL:</label>

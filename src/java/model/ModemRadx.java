@@ -144,6 +144,31 @@ public class ModemRadx
         
         return numeroNombreUsuarioADSL;
     }
+    public boolean buscarEnMisAtributos(String valorBuscado)
+    {
+        valorBuscado = valorBuscado.toLowerCase();
+        boolean coincido = false;
+        
+        if(this.getUsuarioADSL() != null && this.getUsuarioADSL().toLowerCase().contains(valorBuscado))
+        {
+            coincido = true;
+        }
+        if(this.getDireccionIP() != null && this.getDireccionIP().toLowerCase().contains(valorBuscado))
+        {
+            coincido = true;
+        }
+        if(this.getDescripcion() != null && this.getDescripcion().toLowerCase().contains(valorBuscado))
+        {
+            coincido = true;
+        }
+        if( String.valueOf(this.getReintentos()).toLowerCase().contains(valorBuscado) )
+        {
+            coincido = true;
+        }
+        
+        
+        return coincido;
+    }
     @Override
     public String toString()
     {

@@ -30,7 +30,7 @@
                     $("#principal").html(data);
                 }});
                 //CARGANDO FORMULARIO:
-                $.ajax({url:paginaFormulario,success: function (data, textStatus, jqXHR) 
+                $.ajax({url:paginaFormulario, data:{"id":""}success: function (data, textStatus, jqXHR) 
                 {
                     $("#bodyFormulario").html(data);
                 }});
@@ -66,7 +66,7 @@
             }
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Index3</title>
+        <title>Home | VPN Manager TecnoAccion</title>
     </head>
     <body>
         <div id="bg"></div>

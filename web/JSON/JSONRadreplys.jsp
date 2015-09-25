@@ -2,7 +2,6 @@
 <%@page import="org.json.simple.JSONObject"%>
 <% 
     String orderBy = request.getParameter("orderBy");
-    
     if(orderBy==null)
     {
         orderBy = "id";

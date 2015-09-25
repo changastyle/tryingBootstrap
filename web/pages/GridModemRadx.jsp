@@ -2,22 +2,24 @@
 <script> 
     $(document).ready(function()
     {
-       grid("gridModemRadx","id");
+       grid("gridModemRadx",'searchingBarModemRadx',"id");
     });
-    function grid(grid, orderBy)
+    function grid(grid, searchingBar ,orderBy)
     {
+        valorBuscado = $("#"+searchingBar).val();
+        console.log(searchingBar + "" + valorBuscado);
         
         pagina = $("#" + grid).data("pagina");
         if(orderBy== null)
         {
             orderBy = "id";
         }
-        console.log("Grid: " + grid +" | Pagina: " + pagina + " | OrderBY: " + orderBy );
+        console.log("Grid: " + grid +" | Pagina: " + pagina + " | valorBuscado: " +  valorBuscado + " | OrderBY: " + orderBy );
         
         
 
         $.ajax(
-        {url:pagina, data: {"orderBy":orderBy},beforeSend: function (xhr) 
+        {url:pagina, data: {"orderBy":orderBy , "valorBuscado":valorBuscado},method:"GET" ,beforeSend: function (xhr) 
         {
             $("#" + grid + " tbody").html("<img src='../vista/img/ajax-loader.gif'>");       
         }
@@ -33,7 +35,7 @@
             {
                 fila = "<tr class='trGridModemRadx' id='trGridModemRadx" +  arr.vector[i].usuarioADSL +"'>";
                 fila += "<td><input class='checkboxGridModemRadx' type='checkbox' onclick='checkboxOnclickGridModemRadx()' value='" + arr.vector[i].usuarioADSL  + "' data-seleccionar='trGridModemRadx" +  arr.vector[i].usuarioADSL +"'></td>";
-                fila += "<td>" + arr.vector[i].usuarioADSL + "</td>";
+                fila += "<td><a class='identificadoresID' href='javascript:'editModemRadx('"+arr.vector[i].usuarioADSL+"')'>" + arr.vector[i].usuarioADSL + "</a></td>";
                 fila += "<td>" + arr.vector[i].direccionIP + "</td>";
                 fila += "<td>" + arr.vector[i].reintentos + "</td>";
                 fila += "<td>" + arr.vector[i].descripcion + "</td>";
@@ -91,6 +93,22 @@
             });
         }
     }
+    function searchModemRadx(searchingBar)
+    {
+        texto = $(searchingBar).val();
+        console.log("searchModemRadx: " + $(searchingBar).val());
+        
+         grid("gridModemRadx",'searchingBarModemRadx',"id");
+        
+    }
+    function editModemRadx(id)
+    {
+        //RECARGANDO FORMULARIO:
+        $.ajax({url:'FormularioModemRadx.jsp', data:{"id":id}success: function (data, textStatus, jqXHR) 
+        {
+            $("#bodyFormulario").html(data);
+        }});
+    }
 </script>
 <style>
     .trexitosa
@@ -102,14 +120,15 @@
         background-color: #8AC007;
     }
 </style>
+<input type="text" class="form-control" id="searchingBarModemRadx" placeholder="Busqueda Rapida.." onkeyup="searchModemRadx(this)" onkeypress="searchModemRadx(this)">
 <table class="table table-responsive " id="gridModemRadx" data-pagina="../JSON/JSONModemRadx.jsp">
     <thead>
         <tr>
             <th><input type="checkbox" id="checkboxPadre" onclick="selectAllCheckbox(this)"></th>
-            <th class="gridHeader" onclick="grid('gridModemRadx','usuarioADSL')">UsuarioADSL</th>
-            <th class="gridHeader" onclick="grid('gridModemRadx','direccionIP')">Direccion IP</th>
-            <th class="gridHeader" onclick="grid('gridModemRadx','reintentos')">Reintentos</th>
-            <th class="gridHeader" onclick="grid('gridModemRadx','descripcion')">Descripcion</th>
+            <th class="gridHeader" onclick="grid('gridModemRadx', 'searchingBarModemRadx' ,'usuarioADSL')">UsuarioADSL</th>
+            <th class="gridHeader" onclick="grid('gridModemRadx', 'searchingBarModemRadx','direccionIP')">Direccion IP</th>
+            <th class="gridHeader" onclick="grid('gridModemRadx', 'searchingBarModemRadx' ,'reintentos')">Reintentos</th>
+            <th class="gridHeader" onclick="grid('gridModemRadx', 'searchingBarModemRadx','descripcion')">Descripcion</th>
         </tr>
     </thead>
     <tbody>

@@ -2,37 +2,39 @@
 <%@page import="org.json.simple.JSONObject"%>
 <% 
     String orderBy = request.getParameter("orderBy");
-    
+    String valorBuscado = request.getParameter("valorBuscado");
     if(orderBy==null)
     {
         orderBy = "usuarioADSL";
     }
+    if(valorBuscado != null)
+    {
+        valorBuscado = valorBuscado;
+    }
+    else
+    {
+        valorBuscado = "";
+    }
     
-    out.print("{\"vector\":[");
+    String texto = "{\"vector\":[ ";
     java.util.ArrayList<model.ModemRadx> arr = controller.Controller.findAllModemRadx(orderBy);
     
-    int contador = 0;
+    
     for(model.ModemRadx modemRadx : arr)
     {
-        JSONObject aux = new JSONObject();
-        
-	aux.put("usuarioADSL",  modemRadx.getUsuarioADSL());
-        aux.put("direccionIP",  modemRadx.getDireccionIP());
-        aux.put("reintentos",  modemRadx.getReintentos());
-        aux.put("descripcion",  modemRadx.getDescripcion());
-        
-        out.print(aux);
-        
-        contador ++;
-        if(contador >=  arr.size() )
+        if( modemRadx.buscarEnMisAtributos(valorBuscado) )
         {
-            out.print("]}");
-            break;
-        }
-        else
-        {
-            out.print(",");
+            JSONObject aux = new JSONObject();
+            aux.put("usuarioADSL",  modemRadx.getUsuarioADSL());
+            aux.put("direccionIP",  modemRadx.getDireccionIP());
+            aux.put("reintentos",  modemRadx.getReintentos());
+            aux.put("descripcion",  modemRadx.getDescripcion());
+            texto += aux + ","; 
         }
     }
+    texto = texto.substring(0, (texto.length() - 1) );
+    texto += "]}";
+    
+    out.print(texto);
     
 %>
